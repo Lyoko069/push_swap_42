@@ -29,14 +29,16 @@ static void	ft_push(t_stack **dest, t_stack **src)
 	*dest = tmp;
 }
 
-void	pa(t_stack **A, t_stack **B)
+void	pa(t_data *d)
 {
-	ft_push(A, B);
+	ft_push(&d->a, &d->b);
+	d->count[PA]++;
 	write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **A, t_stack **B)
+void	pb(t_data *d)
 {
-	ft_push(B, A);
+	ft_push(&d->b, &d->a);
+	d->count[PB]++;
 	write(1, "pb\n", 3);
 }

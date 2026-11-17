@@ -28,21 +28,24 @@ static void	ft_reverse_rotate(t_stack **src)
 	*src = last;
 }
 
-void	rra(t_stack **A)
+void	rra(t_data *d)
 {
-	ft_reverse_rotate(A);
+	ft_reverse_rotate(&d->a);
+	d->count[RRA]++;
 	write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **B)
+void	rrb(t_data *d)
 {
-	ft_reverse_rotate(B);
+	ft_reverse_rotate(&d->b);
+	d->count[RRB]++;
 	write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **A, t_stack **B)
+void	rrr(t_data *d)
 {
-	ft_reverse_rotate(A);
-	ft_reverse_rotate(B);
+	ft_reverse_rotate(&d->a);
+	ft_reverse_rotate(&d->b);
+	d->count[RRR]++;
 	write(1, "rrr\n", 4);
 }

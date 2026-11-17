@@ -7,7 +7,8 @@ INCLUDES	= -I. -I$(PRINTF_DIR)
 PRINTF_DIR	= ft_printf
 PRINTF		= $(PRINTF_DIR)/libftprintf.a
 
-SRC			= main.c parser_arg.c swap.c push.c rotate.c rrotate.c
+SRC			= main.c parser_arg.c flags.c stack_utils.c index.c swap.c \
+			  push.c rotate.c rrotate.c
 
 OBJ			= $(SRC:.c=.o)
 

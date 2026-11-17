@@ -34,21 +34,24 @@ static void	ft_swap(t_stack **src)
 	*src = second;
 }
 
-void	sa(t_stack **A)
+void	sa(t_data *d)
 {
-	ft_swap(A);
+	ft_swap(&d->a);
+	d->count[SA]++;
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **B)
+void	sb(t_data *d)
 {
-	ft_swap(B);
+	ft_swap(&d->b);
+	d->count[SB]++;
 	write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **A, t_stack **B)
+void	ss(t_data *d)
 {
-	ft_swap(A);
-	ft_swap(B);
+	ft_swap(&d->a);
+	ft_swap(&d->b);
+	d->count[SS]++;
 	write(1, "ss\n", 3);
 }
