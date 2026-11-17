@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/30 12:10:21 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:01:00 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/17 13:22:42 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_data
 	t_strategy	strategy;
 	int			strategy_set;
 	int			bench;
+	double		disorder;
 }	t_data;
 
 int		ft_parser_arg(char *argv, long *res);
@@ -66,6 +67,7 @@ void	ft_free_stack(t_stack **stack);
 int		ft_has_duplicate(t_stack *stack, int value);
 int		ft_is_sorted(t_stack *stack);
 void	ft_assign_index(t_stack *stack);
+double	ft_compute_disorder(t_stack *a);
 void	sa(t_data *d);
 void	sb(t_data *d);
 void	ss(t_data *d);
