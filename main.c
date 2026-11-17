@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/11/09 10:13:14 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:22:28 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/17 13:36:19 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_assign_index(d.a);
+	ft_sort(&d);
 	ft_free_stack(&d.a);
 	ft_free_stack(&d.b);
 	return (0);

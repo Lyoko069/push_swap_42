@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/30 12:10:21 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:22:42 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/17 13:36:19 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ int		ft_has_duplicate(t_stack *stack, int value);
 int		ft_is_sorted(t_stack *stack);
 void	ft_assign_index(t_stack *stack);
 double	ft_compute_disorder(t_stack *a);
+int		ft_stack_size(t_stack *stack);
+int		ft_min_pos(t_stack *stack);
+void	ft_move_to_top_a(t_data *d, int pos);
+void	ft_sort_three(t_data *d);
+void	ft_sort_small(t_data *d);
+void	ft_sort_simple(t_data *d);
+void	ft_sort(t_data *d);
 void	sa(t_data *d);
 void	sb(t_data *d);
 void	ss(t_data *d);
