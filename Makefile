@@ -9,7 +9,8 @@ PRINTF		= $(PRINTF_DIR)/libftprintf.a
 
 SRC			= main.c parser_arg.c flags.c stack_utils.c index.c disorder.c \
 			  stack_info.c sort.c sort_small.c sort_simple.c sort_chunk.c \
-			  sort_radix.c swap.c push.c rotate.c rrotate.c
+			  sort_radix.c sort_low.c sort_low_utils.c swap.c push.c rotate.c \
+			  rrotate.c
 
 OBJ			= $(SRC:.c=.o)
 

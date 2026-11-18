@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/11/17 13:29:55 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:56:01 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/18 12:20:20 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,22 @@ void	ft_move_to_top_a(t_data *d, int pos)
 	{
 		while (pos++ < size)
 			rra(d);
+	}
+}
+
+void	ft_move_to_top_b(t_data *d, int pos)
+{
+	int	size;
+
+	size = ft_stack_size(d->b);
+	if (pos <= size / 2)
+	{
+		while (pos-- > 0)
+			rb(d);
+	}
+	else
+	{
+		while (pos++ < size)
+			rrb(d);
 	}
 }
