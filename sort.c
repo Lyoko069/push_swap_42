@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/11/17 13:36:19 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/18 11:34:40 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/18 11:50:15 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_sort(t_data *d)
 		ft_sort_simple(d);
 	else if (d->strategy == MEDIUM)
 		ft_sort_medium(d);
+	else if (d->strategy == COMPLEX)
+		ft_sort_complex(d);
 	else
 		ft_sort_simple(d);
 }

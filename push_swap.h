@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/30 12:10:21 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/18 11:34:40 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/18 11:50:15 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_sort_three(t_data *d);
 void	ft_sort_small(t_data *d);
 void	ft_sort_simple(t_data *d);
 void	ft_sort_medium(t_data *d);
+void	ft_sort_complex(t_data *d);
 void	ft_sort(t_data *d);
 void	sa(t_data *d);
 void	sb(t_data *d);
