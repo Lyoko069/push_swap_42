@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/11/09 10:13:14 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:36:19 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/18 12:43:19 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	ft_init_data(t_data *d)
 	d->a = NULL;
 	d->b = NULL;
 	d->strategy = ADAPTIVE;
+	d->used = ADAPTIVE;
 	d->strategy_set = 0;
 	d->bench = 0;
 	d->disorder = 0.0;
@@ -76,14 +77,13 @@ int	main(int argc, char **argv)
 
 	ft_init_data(&d);
 	ft_parse_args(&d, argc, argv);
-	d.disorder = ft_compute_disorder(d.a);
-	if (d.a == NULL || ft_is_sorted(d.a))
-	{
-		ft_free_stack(&d.a);
+	if (d.a == NULL)
 		return (0);
-	}
+	d.disorder = ft_compute_disorder(d.a);
 	ft_assign_index(d.a);
 	ft_sort(&d);
+	if (d.bench)
+		ft_print_bench(&d);
 	ft_free_stack(&d.a);
 	ft_free_stack(&d.b);
 	return (0);
