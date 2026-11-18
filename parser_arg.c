@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_arg.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jjurado <jjurado@student.42malaga.com>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/29 12:11:11 by jjurado           #+#    #+#             */
-/*   Updated: 2026/11/11 14:08:53 by jjurado          ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   parser_arg.c                                      :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: jjurado <jjurado@student.42malaga.com>    #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/09/29 12:11:11 by jjurado          #+#    #+#              */
+/*   Updated: 2026/11/18 09:58:29 by jjurado         ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	ft_isspace(int c)
-{
-	if (c == 32 || (c >= 9 && c <= 13))
-		return (1);
-	else
-		return (0);
-}
 
 static int	ft_isdigit(int c)
 {
@@ -37,21 +29,21 @@ int	ft_parser_arg(char *argv, long *res)
 	nbr = 0;
 	i = 0;
 	sig = 1;
-	while (argv[i] != '\0' && ft_isspace(argv[i]))
-		i++;
+	if (argv[i] == '-')
+		sig = -1;
 	if (argv[i] == '-' || argv[i] == '+')
-	{
-		if (argv[i] == '-')
-			sig *= -1;
 		i++;
-	}
-	while (argv[i] != '\0' && ft_isdigit(argv[i]))
+	if (!ft_isdigit(argv[i]))
+		return (0);
+	while (ft_isdigit(argv[i]))
 	{
 		nbr = (nbr * 10) + (argv[i] - '0');
+		if (nbr * sig > 2147483647 || nbr * sig < -2147483648)
+			return (0);
 		i++;
 	}
-	if (argv[i] != '\0' || (nbr > 2147483647 || nbr < -2147483648))
+	if (argv[i] != '\0')
 		return (0);
-	*res = nbr;
+	*res = nbr * sig;
 	return (1);
 }

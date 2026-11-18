@@ -30,21 +30,24 @@ static void	ft_rotate(t_stack **src)
 	first->next = NULL;
 }
 
-void	ra(t_stack **A)
+void	ra(t_data *d)
 {
-	ft_rotate(A);
+	ft_rotate(&d->a);
+	d->count[RA]++;
 	write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **B)
+void	rb(t_data *d)
 {
-	ft_rotate(B);
+	ft_rotate(&d->b);
+	d->count[RB]++;
 	write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **A, t_stack **B)
+void	rr(t_data *d)
 {
-	ft_rotate(A);
-	ft_rotate(B);
+	ft_rotate(&d->a);
+	ft_rotate(&d->b);
+	d->count[RR]++;
 	write(1, "rr\n", 3);
 }
