@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/30 12:10:21 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/17 13:36:19 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/18 12:43:19 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef enum e_strategy
 	ADAPTIVE,
 	SIMPLE,
 	MEDIUM,
-	COMPLEX
+	COMPLEX,
+	LOW
 }	t_strategy;
 
 typedef struct s_data
@@ -54,6 +55,7 @@ typedef struct s_data
 	t_stack		*b;
 	int			count[OP_COUNT];
 	t_strategy	strategy;
+	t_strategy	used;
 	int			strategy_set;
 	int			bench;
 	double		disorder;
@@ -71,10 +73,21 @@ double	ft_compute_disorder(t_stack *a);
 int		ft_stack_size(t_stack *stack);
 int		ft_min_pos(t_stack *stack);
 void	ft_move_to_top_a(t_data *d, int pos);
+void	ft_move_to_top_b(t_data *d, int pos);
 void	ft_sort_three(t_data *d);
 void	ft_sort_small(t_data *d);
 void	ft_sort_simple(t_data *d);
+void	ft_sort_medium(t_data *d);
+void	ft_sort_complex(t_data *d);
+void	ft_sort_low(t_data *d);
+void	ft_low_split(t_data *d, int *keep, int n);
+void	ft_low_merge(t_data *d);
 void	ft_sort(t_data *d);
+void	ft_putstr_err(const char *s);
+void	ft_putnbr_err(long n);
+char	*ft_strategy_name(t_strategy strategy);
+char	*ft_class_name(t_strategy used);
+void	ft_print_bench(t_data *d);
 void	sa(t_data *d);
 void	sb(t_data *d);
 void	ss(t_data *d);
