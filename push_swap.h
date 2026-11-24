@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/30 12:10:21 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/18 12:43:19 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/24 19:30:12 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include "libftprintf.h"
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -59,10 +59,15 @@ typedef struct s_data
 	int			strategy_set;
 	int			bench;
 	double		disorder;
+	char		**words;
 }	t_data;
 
 int		ft_parser_arg(char *argv, long *res);
 int		ft_parse_flag(t_data *d, char *arg);
+void	ft_parse_args(t_data *d, int argc, char **argv);
+void	ft_error(t_data *d);
+char	**ft_split(const char *s, char c);
+void	ft_free_split(char **words);
 t_stack	*ft_new_node(int value);
 void	ft_add_back(t_stack **stack, t_stack *node);
 void	ft_free_stack(t_stack **stack);
