@@ -6,7 +6,7 @@
 /*   By: mavidal- <mavidal-@student.42malaga.com>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/11/18 12:43:19 by mavidal-         #+#    #+#              */
-/*   Updated: 2026/11/18 12:43:19 by mavidal-        ###   ########.fr        */
+/*   Updated: 2026/11/24 19:30:12 by mavidal-        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void	ft_putstr_err(const char *s)
 {
-	write(2, s, ft_strlen(s));
+	int	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	write(2, s, len);
 }
 
 void	ft_putnbr_err(long n)

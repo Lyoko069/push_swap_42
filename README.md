@@ -55,9 +55,9 @@ Every public operation updates the list pointers, increments its counter in `d->
 ### 1. Build
 
 ```bash
-make        # builds ft_printf and push_swap
+make        # builds push_swap
 make clean  # removes object files
-make fclean # removes object files, libftprintf.a and push_swap
+make fclean # removes object files and push_swap
 make re     # full rebuild
 ```
 
@@ -68,16 +68,18 @@ make re     # full rebuild
 ```
 
 * The first number is the **top** of stack A. Flags may appear anywhere among the numbers.
+* Numbers can be given as separate arguments, as one quoted string, or mixed: `./push_swap 3 2 1`, `./push_swap "3 2 1"` and `./push_swap "3 2" 1` are equivalent. Each argument is split on spaces; an empty or blank argument (`""`, `"  "`) is an error.
 * Without a strategy flag the program uses `--adaptive`. Giving two strategy flags is an error.
 * Without arguments the program prints nothing. An already sorted list prints no instruction.
 
 ```bash
 ./push_swap 42 -5 12 0 8                 # adaptive (default)
 ./push_swap --simple 5 4 3 2 1           # force the O(n²) strategy
-ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+./push_swap "42 -5 12 0 8"               # same list as one string
+ARG="4 67 3 87 23"; ./push_swap --adaptive $ARG | wc -l
 ```
 
-> **zsh users:** zsh does not split `$ARG` into words. Use `./push_swap ${=ARG}` or run the examples in `bash`.
+> This works the same in `bash` and `zsh`: even though zsh passes `$ARG` as a single argument, `push_swap` splits it on spaces.
 
 ### 3. Benchmark mode
 
@@ -108,7 +110,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $
 
 # memory (Valgrind, or AddressSanitizer where Valgrind is not available)
 valgrind --leak-check=full ./push_swap 9 -2 15 0 4
-cc -g -fsanitize=address -I. -Ift_printf *.c ft_printf/*.c -o ps_asan && ./ps_asan 1 2 2
+cc -g -fsanitize=address -I. *.c -o ps_asan && ./ps_asan 1 2 2
 ```
 
 ---
@@ -251,7 +253,9 @@ The program keeps both stacks, the operation counters and the strategy settings 
 
 | File | Description |
 | :--- | :--- |
-| `main.c` | Entry point: initializes `t_data`, parses arguments/flags, sorts, prints the benchmark and frees memory. |
+| `main.c` | Entry point: initializes `t_data`, parses the arguments, sorts, prints the benchmark and frees memory. |
+| `args.c` | Argument reading: splits every argument on spaces, sends each word to the flag or number parser, and `ft_error` (frees everything and prints `Error`). |
+| `split.c` | `ft_split` / `ft_free_split`: cuts a string into words separated by a character. |
 | `push_swap.h` | `t_stack`, `t_data`, `t_op`, `t_strategy` definitions and prototypes. |
 | `parser_arg.c` | Strict numeric validation and `long` conversion to detect integer overflow. |
 | `flags.c` | Strategy flags (`--simple`, `--medium`, `--complex`, `--adaptive`) and `--bench`. |
@@ -268,7 +272,6 @@ The program keeps both stacks, the operation counters and the strategy settings 
 | `bench.c` / `bench_utils.c` | `--bench` report written to `stderr`. |
 | `swap.c` / `push.c` | `sa`, `sb`, `ss`, `pa`, `pb`. |
 | `rotate.c` / `rrotate.c` | `ra`, `rb`, `rr`, `rra`, `rrb`, `rrr`. |
-| `ft_printf/` | Custom `ft_printf` library, compiled automatically by the `Makefile`. |
 
 ---
 
